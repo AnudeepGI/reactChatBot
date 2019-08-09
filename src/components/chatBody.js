@@ -10,23 +10,12 @@ import msgUpdate from "../actions/msgUpate"
 
 class chatBoody extends Component {
     render() {
-
-        const listItems = this.props.state.msg.map((number, item) => {
-            console.log("##############")
-            console.log(number[item])
-            console.log(number)
-            console.log("##############")
-            return (
-                <div >
-                    <ClientResponse valProps={number[item]} />
-                    <BotResponse valProps={number[item]} />
-                </div>
-            )
-        });
-
         return (
             <div>
-                {listItems}
+                <div >
+                    <ClientResponse />
+                    <BotResponse />
+                </div>
             </div>
         )
     }

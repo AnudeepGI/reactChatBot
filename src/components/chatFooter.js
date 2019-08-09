@@ -5,6 +5,10 @@ import { connect } from "react-redux";
 
 import testUser from "../actions/testUser"
 import msgUpate from "../actions/msgUpate"
+import clientMsg from "../actions/clientMsg"
+
+import botMsg from "../actions/botMsg"
+
 import chatBotApi from '../service/chatBotApi';
 
 class chatFooter extends Component {
@@ -13,8 +17,11 @@ class chatFooter extends Component {
     testUserVal(val) {
         let apiRespose = chatBotApi('http://localhost:8000/')
         let that = this;
+
+        this.props.clientMsg(val);
+
         apiRespose.then(function (response) {
-            that.props.msgUpate(response.data.result.fulfillment.speech, val);
+            that.props.botMsg(response.data.result.fulfillment.speech);
         })
     }
 
@@ -41,7 +48,12 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch) {
-    return bindActionCreators({ testUser: testUser, msgUpate: msgUpate }, dispatch)
+    return bindActionCreators({
+        testUser: testUser,
+        msgUpate: msgUpate,
+        clientMsg: clientMsg,
+        botMsg: botMsg
+    }, dispatch)
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(chatFooter);
