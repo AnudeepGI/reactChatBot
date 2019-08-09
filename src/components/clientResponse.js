@@ -5,16 +5,19 @@ import { connect } from "react-redux";
 
 class clientResponse extends Component {
     render() {
+        console.log(this.props.valProps)
 
         return (
             <div className="msg right-msg">
                 <div className="msg-img" style={{ backgroundImage: 'url(https://image.flaticon.com/icons/svg/145/145867.svg)' }} />
                 <div className="msg-bubble">
                     <div className="msg-info">
-                        <div className="msg-info-name">{this.props.state.msg.bot.title}</div>
-                        <div className="msg-info-time">{this.props.state.msg.bot.time}</div>
+                        <div className="msg-info-name">BOT</div>
+                        <div className="msg-info-time">12:45</div>
                     </div>
-                    <div className="msg-text">{this.props.state.msg.bot.msg}</div>
+                    <div className="msg-text">
+                        {this.props.valProps.msg}
+                    </div>
                 </div>
             </div>
         );
@@ -27,8 +30,5 @@ function mapStateToProps(state) {
         state
     };
 }
-
-
-
 
 export default connect(mapStateToProps, '')(clientResponse);

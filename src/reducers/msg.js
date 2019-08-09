@@ -1,14 +1,31 @@
-export default function () {
-    return {
-        bot: {
-            title: 'BOT',
-            msg: 'Hi, welcome to SimpleChat! Go ahead and send me a message.😄',
-            time: '12:46'
+let defaultMsg = [
+    [
+        {
+            title: "BOT1111",
+            msg: "11111Hi, welcome to SimpleChat! Go ahead and send me a message.😄"
         },
-        human: {
-            title: 'Sajad',
-            msg: 'Hi, welcome to SimpleChat! Go ahead and send me a message.😄',
-            time: '12:46'
+        {
+            title: "22222BOT",
+            msg: "22222Hi, welcome to SimpleChat! Go ahead and send me a message.😄"
+        }
+    ], [
+        {
+            title: "333333BOT",
+            msg: "444444Hi, welcome to SimpleChat! Go ahead and send me a message.😄"
         },
+        {
+            title: "5555555BOT",
+            msg: "555555Hi, welcome to SimpleChat! Go ahead and send me a message.😄"
+        }
+    ]
+]
+
+
+export default function (state = null, action) {
+    switch (action.type) {
+        case 'MSG_UPDATE':
+            return action.payload
+            break;
     }
+    return defaultMsg
 }
