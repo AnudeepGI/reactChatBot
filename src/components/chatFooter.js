@@ -3,11 +3,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import testUser from "../actions/testUser"
-import msgUpate from "../actions/msgUpate"
-import clientMsg from "../actions/clientMsg"
-
-import botMsg from "../actions/botMsg"
+import chat from "../actions/chat"
 
 import chatBotApi from '../service/chatBotApi';
 
@@ -18,16 +14,13 @@ class chatFooter extends Component {
         let apiRespose = chatBotApi('http://localhost:8000/')
         let that = this;
 
-        this.props.clientMsg(val);
-
+        this.props.chat('client', val);
         apiRespose.then(function (response) {
-            that.props.botMsg(response.data.result.fulfillment.speech);
+            that.props.chat('bot', response.data.result.fulfillment.speech)
         })
     }
 
     render() {
-
-
         return (
             <div className="msger-inputarea" >
                 <input type="text" id="myText" onChange={this.handleChange} className="msger-input" placeholder="Enter your message..." />
@@ -49,10 +42,7 @@ function mapStateToProps(state) {
 
 function matchDispatchToProps(dispatch) {
     return bindActionCreators({
-        testUser: testUser,
-        msgUpate: msgUpate,
-        clientMsg: clientMsg,
-        botMsg: botMsg
+        chat: chat
     }, dispatch)
 }
 

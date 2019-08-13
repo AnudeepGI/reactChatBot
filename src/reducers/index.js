@@ -1,9 +1,10 @@
 import { combineReducers } from "redux";
 import chatTitle from "./chatTitle";
-import msg from "./msg"
+import defaultChatMsg from "./defaultChatMsg"
+
 const allReducers = combineReducers({
     chatTitle,
-    msg
+    defaultChatMsg
 });
 
 export default allReducers;
